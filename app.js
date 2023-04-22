@@ -11,6 +11,7 @@ const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const csv = require('csv-parser');
+// const cors = require('cors')
 
 // const upload = multer({ dest: 'uploads/' });
 // const upload = multer({ dest: 'uploads/', limits: { fileSize: 1000000 }, fileFilter: fileFilter }).single('file');
@@ -333,7 +334,7 @@ app.put('/SideAdminDisApproved', (req, res) => {
 //EVERYTHING ABOUT FACULTY : START 
 
 app.get('/Faculty', (req, res) => {
-    // GET : http://localhost:3002/SideAdmin
+    // GET : http://localhost:3002/Faculty
 
     conn.query('SELECT * FROM faculty', (err, result) => {
         if(err){
@@ -411,11 +412,11 @@ app.delete('/FacultyDelete', (req, res) => {
             res.send('Email does not exist in the database');
         } else {
             // Email exists, delete record
-            conn.query("DELETE FROM admin WHERE email = ?", [email], (err, result) => {
+            conn.query("DELETE FROM faculty WHERE email = ?", [email], (err, result) => {
                 if (err) {
                     throw err;
                 } else {
-                    res.send('Admin has been deleted successfully from the database');
+                    res.send('faculty has been deleted successfully from the database');
                 }
             });
         }
@@ -620,8 +621,9 @@ app.post('/UploadProgram', (req, res) => {
     const program_details = req.body.program_details; 
     const program_lead = req.body.program_lead; 
     const program_member = req.body.program_member; 
+    const status = 'IN-PROGRESS'
     
-    conn.query("INSERT INTO program_management (program_title, start, end, place, program_details, program_lead, program_member) VALUES (?,?,?,?,?,?,?)", [program_title, start, end, place, program_details, program_lead, program_member], (err, result) => {
+    conn.query("INSERT INTO program_management (program_title, start, end, place, program_details, program_lead, program_member, status) VALUES (?,?,?,?,?,?,?,?)", [program_title, start, end, place, program_details, program_lead, program_member, status], (err, result) => {
         if(err){
             throw err
         }else{
@@ -682,9 +684,9 @@ app.put('/UpdateProgram', (req, res) => {
 app.delete('/DeleteProgram', (req, res) => {
 
     // DELETE : http://localhost:3002/DeleteProgram
-   // {
-   //     "pid": 1
-   // }     
+//    {
+//        "pid": 1
+//    }     
 
    const pid = req.body.pid;
    conn.query("SELECT * FROM program_management WHERE pid = ?", [pid], (err, rows) => {
@@ -710,7 +712,7 @@ app.delete('/DeleteProgram', (req, res) => {
 
 app.put('/CompleteProgram', (req, res) => {
 
-    // POST : http://localhost:3002/CompleteProgram
+    // PUT : http://localhost:3002/CompleteProgram
    // {
    //     "pid": 1
    // }     
@@ -738,7 +740,7 @@ app.put('/CompleteProgram', (req, res) => {
 
 app.put('/InCompleteProgram', (req, res) => {
 
-    // POST : http://localhost:3002/InCompleteProgram
+    // PUT : http://localhost:3002/InCompleteProgram
    // {
    //     "pid": 1
    // }     
@@ -1152,6 +1154,76 @@ app.post('/theme', (req, res) => {
 
 //EVERYTHING ABOUT THEME : END 
 
+//EVERYTHING ABOUT LOGIN : START 
+
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+    const rpass = md5(password);
+  
+    // Check if email and password match a row in the faculty table
+    conn.query(
+      'SELECT * FROM faculty WHERE email = ? AND password = ?',
+      [email, rpass],
+      (err, results) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).send('An error occurred');
+        }
+  
+        if (results.length === 0) {
+          // Email and password did not match a row in the faculty table
+          const faculty_id = null; // or some default value
+          conn.query(
+            'INSERT INTO login_attempts_faculty (faculty_id, attempt_time, successful) VALUES (?, NOW(), false)',
+            [faculty_id],
+            (err) => {
+              if (err) {
+                console.error(err);
+              }
+            }
+          );
+  
+          return res.status(401).send('Invalid email or password');
+        }
+  
+        // Email and password matched a row in the faculty table
+        const faculty_id = results[0].fid;
+  
+        conn.query(
+          'INSERT INTO login_attempts_faculty (faculty_id, attempt_time, successful) VALUES (?, NOW(), true)',
+          [faculty_id],
+          (err) => {
+            if (err) {
+              console.error(err);
+            }
+          }
+        );
+  
+        return res.send('Login successful!');
+      }
+    );
+  });
+  
+  // Create login_attempts_faculty table
+  conn.query(`
+    CREATE TABLE login_attempts_faculty (
+      id INT NOT NULL AUTO_INCREMENT,
+      faculty_id INT NOT NULL,
+      attempt_time DATETIME NOT NULL,
+      successful BOOLEAN NOT NULL,
+      PRIMARY KEY (id),
+      FOREIGN KEY (faculty_id) REFERENCES faculty (fid)
+    )
+  `, (err) => {
+    if (err) {
+      console.error(err);
+    }
+  });
+  
+
+  
+
+//EVERYTHING ABOUT LOGIN : END 
 
 
 
