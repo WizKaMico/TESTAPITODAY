@@ -20,6 +20,8 @@ const csv = require('csv-parser');
 
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
+app.use(cors())
+app.use(express.json())
 
 const conn = mysql.createConnection({
     host : 'localhost',
@@ -50,8 +52,11 @@ app.post('/SuperAdminCreation', (req, res) => {
     // }
 
     const fullname = req.body.fullname 
+    console.log(fullname)
     const email = req.body.email 
+    console.log(email)
     const password = req.body.password
+    console.log(password)
     const rpass = crypto.createHash('md5').update(password).digest('hex');
     // getting date
     var today = new Date();
@@ -69,18 +74,22 @@ app.post('/SuperAdminCreation', (req, res) => {
             throw err;
         } else if (rows.length > 0) {
             res.send('Email already exists in the database');
+            res.send({ success: false, message: 'Email already exists in the database' });
         } else {
             // Email does not exist, insert new record
             conn.query("INSERT INTO super_admin (fullname, email, password, date_created) VALUES (?,?,?,?)", [fullname, email, rpass, date_created], (err, result) => {
                 if (err) {
                     throw err;
                 } else {
+                    res.send({ success: true, message: 'Super admin has been inserted successfully in the database ' + fullname });
                     res.send('Super admin has been inserted successfully in the database ' + fullname);
                 }
             });
         }
     });
 });
+
+
 
 
 app.delete('/SuperAdminDeletion', (req, res) => {
@@ -162,11 +171,11 @@ app.post('/SideAdminCreation', (req, res) => {
 
     // POST : http://localhost:3002/SideAdminCreation
     // {
-    //     "fullname":"Gerald Mico Facistol", 
-    //     "email":"tricore012@gmail.com",
-    //     "contact": "09166513189",  
-    //     "password": "micotothemoon",
-    //     "department":"I.T DEPARTMENT"    
+        // "fullname":"Gerald Mico Facistol", 
+        // "email":"tricore012@gmail.com",
+        // "contact": "09166513189",  
+        // "password": "micotothemoon",
+        // "department":"I.T DEPARTMENT"    
     // }
 
     const fullname = req.body.fullname;
@@ -941,7 +950,6 @@ app.post('/PartnersCreation', (req, res) => {
     //     "contact_email": "tricore012@gmail.com",
     //     "start_date": "2022-04-20",
     //     "expiration_date": "2023-04-24"
-        
     // }
 
 
