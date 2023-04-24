@@ -1,84 +1,74 @@
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-alpine.css";
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f1f1f1;
     margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    height: 100vh; /* set the height of the body to the full viewport height */
 }
 
+.sidenav a.active {
+    background-color: #616161;
+    color: white;
+}
 /* Side Navigation Bar */
 .sidenav {
     height: 100%;
-    width: 250px;
+    width: 220px;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #8B0000;
+    background-color: #590000;
     overflow-x: hidden;
-    padding-top: 20px;
+    padding-top: 60px;
 }
 
 .sidenav a {
-    padding: 6px 8px 6px 16px;
+    padding: 10px 8px 10px 32px;
     text-decoration: none;
-    font-size: 20px;
-    color: #fff;
+    font-size: 18px;
+    color: #f5f5f5;
     display: block;
+    transition: 0.3s;
 }
 
 .sidenav a:hover {
-    background-color: #800000;
-    color: #fff;
+    color: #590000;
+    background-color: #f5f5f5;
 }
 
 .main {
-    margin-left: 250px; /* Same width as the sidebar */
-    padding: 0px 10px;
+    margin-left: 220px;
+    padding: 0 20px;
 }
 
-/* Header */
 .header {
-    background-color: #8B0000;
-    color: #fff;
-    padding: 10px;
-    font-size: 30px;
-    width: 100%;
-    text-align: center;
+    font-size: 36px;
+    padding: 30px 0;
+    color: #590000;
+    border-bottom: 1px solid #ccc;
     margin-bottom: 30px;
 }
 
-/* Cards */
 .card {
     background-color: #fff;
-    border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 20px;
     margin-bottom: 20px;
-    width: 80%;
-    max-width: 500px;
 }
 
-.card h3 {
-    margin-top: 0;
+h3 {
+    font-size: 24px;
+    color: #590000;
+    margin-bottom: 20px;
 }
 
-.card p {
-    margin-bottom: 0;
+p {
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 10px;
 }
 
-/* Responsive layout */
-@media screen and (max-width: 600px) {
-    .sidenav {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
 
-    .sidenav a {
-        float: left;
-        padding: 15px;
-    }
-
-    .main {
-        margin-left: 0;
-    }
-}

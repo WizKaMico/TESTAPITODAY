@@ -1,23 +1,29 @@
-<p>dashboard works!</p>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Dashboard</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/ag-grid-community@29.3.2/styles/ag-grid.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@29.3.2/styles/ag-theme-alpine.css" /> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
 </head>
 <body>
 
 	<!-- Side Navigation Bar -->
 	<div class="sidenav">
-		<a href="#">Dashboard</a>
-		<a href="#">Profile</a>
-		<a href="#">Settings</a>
-		<a href="#">Logout</a>
+		<a href="#" class="active"><span class="fa fa-tachometer"></span> Dashboard</a>
+		<a href="/program"><span class="fa fa-book"></span> Programs</a>
+		<a href="/partners"><span class="fa fa-handshake-o"></span> Partners</a>
+		<a href="/report"><span class="fa fa-file-text-o"></span> Reports</a>
+		<a href="/content"><span class="fa fa-edit"></span> Manage Content</a>
+		<a href="/"><span class="fa fa-users"></span> Manage Users</a>
+		<a href="#"><span class="fa fa-sign-out"></span> Logout</a>
 	</div>
 
 	<!-- Main content -->
 	<div class="main">
-		<div class="header">Dashboard</div>
+		<div class="header">WELCOME TO CICT</div>
 
 		<div class="card">
 			<!-- <h3>Welcome, {{fullname}}!</h3>
@@ -27,8 +33,11 @@
 		</div>
 
 		<div class="card">
-			<h3>Recent Activities</h3>
-			<p>No recent activities.</p>
+			<h3>DASHBOARD</h3>
+            <ag-grid-angular style="width: 100%; height: 100%;"
+                 [rowData]="programs" [columnDefs]="columnDefs">
+           </ag-grid-angular>
+
 		</div>
 	</div>
 
