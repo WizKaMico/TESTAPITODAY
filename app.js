@@ -1227,9 +1227,37 @@ app.post('/login', (req, res) => {
       console.error(err);
     }
   });
-  
 
+
+  app.post('/LoginValidateAdmin', (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+    const hashd = md5(password)
   
+    conn.query(
+      'SELECT * FROM admin WHERE email = ? AND password = ? AND status = "APPROVED"',
+      [email, hashd],
+      (err, results) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).send('An error occurred');
+        }
+  
+        if (results.length === 0) {
+          // Email and password did not match a row in the faculty table
+        //   alert('Invalid email / password')
+          return res.redirect('http://localhost:4200/login');
+        }
+  
+        // Email and password matched a row in the faculty table
+        // return res.send('Login successful!');
+        // alert('Redirecting to the host')
+        return res.redirect('http://localhost:4200/dashboard');
+      }
+    );
+  });
+
+
 
 //EVERYTHING ABOUT LOGIN : END 
 
