@@ -1,26 +1,13 @@
-<<<<<<< HEAD
-
-
-<?php include('cbhn/graph.php') ?>
-=======
 <?php
 
-// Database configuration
-$host = 'localhost';
-$dbname = 'test_app';
-$username = 'root';
-$password = '';
+$server = "localhost"; 
+$database = "test_app"; 
+$username = "root"; 
+$password = ""; 
 
-// Connect to the database
-$dsn = "mysql:host=$host;dbname=$dbname";
-$options = array(
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-);
-try {
-    $db = new PDO($dsn, $username, $password, $options);
-} catch (PDOException $e) {
-    echo 'Connection failed: ' . $e->getMessage();
-    exit;
+$conn = new mysqli($server, $username, $password, $database); 
+if(!$conn){
+    echo "CONNECTION LOST";
 }
 
 // Execute the SQL query
@@ -87,38 +74,16 @@ foreach ($programs as $programTitle => $programData) {
 ?>
 
 
->>>>>>> b7b09fba6c8f1fd44ee9d0f5415aac578a404e88
 <!DOCTYPE html>
 <html>
 <head>
     <title>Program Participants Chart</title>
-<<<<<<< HEAD
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-<style>
-    #chart-container {
-        width: 100%;
-        height: 500px;
-    }
-    #chart {
-        width: 100%;
-        height: 100%;
-    }
-</style>
-
-<div id="chart-container">
-    <canvas id="chart"></canvas>
-</div>
-=======
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div style="width: 600px;">
         <canvas id="chart"></canvas>
     </div>
->>>>>>> b7b09fba6c8f1fd44ee9d0f5415aac578a404e88
     <script>
         var ctx = document.getElementById('chart').getContext('2d');
         var chart = new Chart(ctx, {

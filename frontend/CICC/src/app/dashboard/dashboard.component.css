@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 /* @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~ag-grid-community/dist/styles/ag-theme-alpine.css"; */
+=======
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-alpine.css";
+>>>>>>> b7b09fba6c8f1fd44ee9d0f5415aac578a404e88
 
 body {
     margin: 0;
@@ -57,9 +62,12 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 20px;
     margin-bottom: 20px;
+<<<<<<< HEAD
     height: 500px;
     
  
+=======
+>>>>>>> b7b09fba6c8f1fd44ee9d0f5415aac578a404e88
 }
 
 h3 {
