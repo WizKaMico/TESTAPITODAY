@@ -624,19 +624,25 @@ app.post('/UploadProgram', (req, res) => {
     // }
 
     const program_title = req.body.program_title; 
+    console.log(program_title + 'CHECK')
     const start = req.body.start; 
-    const end = req.body.start; 
+    console.log(start + 'START') 
+    const end = req.body.end; 
+    console.log(end + 'end')
     const place = req.body.place; 
+    console.log(place + 'place')
     const program_details = req.body.program_details; 
-    const program_lead = req.body.program_lead; 
-    const program_member = req.body.program_member; 
+    console.log(program_details + 'program')
+    // const program_lead = req.body.program_lead; 
+    // const program_member = req.body.program_member; 
     const status = 'IN-PROGRESS'
     
-    conn.query("INSERT INTO program_management (program_title, start, end, place, program_details, program_lead, program_member, status) VALUES (?,?,?,?,?,?,?,?)", [program_title, start, end, place, program_details, program_lead, program_member, status], (err, result) => {
+    conn.query("INSERT INTO program_management (program_title, start, end, place, program_details, status) VALUES (?,?,?,?,?,?)", [program_title, start, end, place, program_details, status], (err, result) => {
         if(err){
             throw err
         }else{
-            res.send('Added Program Succesfully ' + program_title);
+            // res.send('Added Program Succesfully ' + program_title);
+            return res.redirect('http://localhost:4200/program');
         }
     })
 })
@@ -991,7 +997,8 @@ app.post('/PartnersCreation', (req, res) => {
                 if (err) {
                     throw err;
                 } else {
-                    res.send('Partner has been inserted successfully in the database ' + name);
+                    // res.send('Partner has been inserted successfully in the database ' + name);
+                    return res.redirect('http://localhost:4200/partners');
                 }
             });
         }
@@ -1213,20 +1220,20 @@ app.post('/login', (req, res) => {
   });
   
   // Create login_attempts_faculty table
-  conn.query(`
-    CREATE TABLE login_attempts_faculty (
-      id INT NOT NULL AUTO_INCREMENT,
-      faculty_id INT NOT NULL,
-      attempt_time DATETIME NOT NULL,
-      successful BOOLEAN NOT NULL,
-      PRIMARY KEY (id),
-      FOREIGN KEY (faculty_id) REFERENCES faculty (fid)
-    )
-  `, (err) => {
-    if (err) {
-      console.error(err);
-    }
-  });
+//   conn.query(`
+//     CREATE TABLE login_attempts_faculty (
+//       id INT NOT NULL AUTO_INCREMENT,
+//       faculty_id INT NOT NULL,
+//       attempt_time DATETIME NOT NULL,
+//       successful BOOLEAN NOT NULL,
+//       PRIMARY KEY (id),
+//       FOREIGN KEY (faculty_id) REFERENCES faculty (fid)
+//     )
+//   `, (err) => {
+//     if (err) {
+//       console.error(err);
+//     }
+//   });
 
 
   app.post('/LoginValidateAdmin', (req, res) => {

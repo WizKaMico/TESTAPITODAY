@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+	
 </head>
 <body>
 
@@ -15,11 +16,7 @@
 		<a href="/partners" class="active"><span class="fa fa-handshake-o"></span> Partners</a>
 		<a href="/report"><span class="fa fa-file-text-o"></span> Reports</a>
 		<a href="/content"><span class="fa fa-edit"></span> Manage Content</a>
-<<<<<<< HEAD
 		<a href="/account"><span class="fa fa-users"></span> Manage Users</a>
-=======
-		<a href="/"><span class="fa fa-users"></span> Manage Users</a>
->>>>>>> b7b09fba6c8f1fd44ee9d0f5415aac578a404e88
 		<a href="#"><span class="fa fa-sign-out"></span> Logout</a>
 	</div>
 
@@ -34,14 +31,63 @@
 			<p>Department: {{department}}</p> -->
 		</div>
 
+
 		<div class="card">
-			<h3>PARTNER</h3>
-<<<<<<< HEAD
-            <iframe src="http://localhost/NEWPROJ-MAIN/controller/partners.php" style="width:100%;height:500px;border:none;"  scrolling="no" ></iframe>
-=======
-            
->>>>>>> b7b09fba6c8f1fd44ee9d0f5415aac578a404e88
-		</div>
+			<div class="row">
+
+			<div class="column">
+				<div class="cards">
+					<h3 style="text-align:left;">PARTNER</h3>
+					<iframe src="http://localhost/NEWPROJ-MAIN/controller/partners.php" style="width:100%;height:500px;border:none;"  scrolling="no" ></iframe>
+				</div>
+			  </div>
+			    
+			 
+			     <!-- // {
+				//     "name":"ACCENTURE", 
+				//     "address":"MAGICIAN AKO PERO HINDI KA SURE", 
+				//     "contact_person": "Gerald",
+				//     "contact_number": "09166513189",
+				//     "contact_email": "tricore012@gmail.com",
+				//     "start_date": "2022-04-20",
+				//     "expiration_date": "2023-04-24"
+				// } -->
+			
+			  <div class="columns">
+				<div class="cards">
+				  <h3 style="text-align:left;">ADD PARTNER</h3>
+				  <form action="http://localhost:3002/PartnersCreation" method="POST">
+					<label for="program_title">Partner Name</label>
+					<input type="text" name="name" placeholder="Partner Name" required>
+					
+					<label for="program_address">Partner Address</label>
+					<input type="text" name="address" placeholder="Partner Address" required>
+					
+					<label for="contact_person">Contact Person</label>
+					<input type="text" name="contact_person" placeholder="Contact Person" required>
+					
+					<label for="contact_number">Contact Number</label>
+					<input type="text" name="contact_number" placeholder="Contact Number" required>
+					
+					<label for="contact_email">Contact Email</label>
+					<input type="email" name="contact_email" placeholder="Contact Email" required>
+					
+					<label for="start_date">Start Date</label>
+					<input type="date" name="start_date" placeholder="Start Date" required>
+					
+					<label for="expiration_date">End Date</label>
+					<input type="date" name="expiration_date" placeholder="End Date" required>
+				
+					<input type="submit" value="Submit">
+				  </form>
+				</div>
+			  </div>
+			  
+		  </div>
+	 </div>
+		  
+
+		
 	</div>
 
 </body>

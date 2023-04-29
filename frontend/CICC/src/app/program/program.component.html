@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+	
 </head>
 <body>
 
@@ -15,11 +16,7 @@
 		<a href="/partners"><span class="fa fa-handshake-o"></span> Partners</a>
 		<a href="/report"><span class="fa fa-file-text-o"></span> Reports</a>
 		<a href="/content"><span class="fa fa-edit"></span> Manage Content</a>
-<<<<<<< HEAD
 		<a href="/account"><span class="fa fa-users"></span> Manage Users</a>
-=======
-		<a href="/"><span class="fa fa-users"></span> Manage Users</a>
->>>>>>> b7b09fba6c8f1fd44ee9d0f5415aac578a404e88
 		<a href="#"><span class="fa fa-sign-out"></span> Logout</a>
 	</div>
 
@@ -34,14 +31,58 @@
 			<p>Department: {{department}}</p> -->
 		</div>
 
+
 		<div class="card">
-			<h3>PROGRAM</h3>
-            
-<<<<<<< HEAD
-			<iframe src="http://localhost/NEWPROJ-MAIN/controller/programs.php" style="width:100%;height:500px;border:none;"  scrolling="no" ></iframe>
-=======
->>>>>>> b7b09fba6c8f1fd44ee9d0f5415aac578a404e88
-		</div>
+			<div class="row">
+
+			<div class="column">
+				<div class="cards">
+					<h3 style="text-align:left;">PROGRAM</h3>
+				  <iframe src="http://localhost/NEWPROJ-MAIN/controller/programs.php" style="width:100%;height:590px;border:none;"></iframe>
+				</div>
+			  </div>
+
+			  <!-- // POST : http://localhost:3002/UploadProgram
+			  // {
+			  //     "program_title":"WHAT DOESNT KILL YOU MAKES YOU STRONGER",
+			  //     "start":"2023-04-22 14:30:00",
+			  //     "end":"2023-04-22 14:30:00",
+			  //     "place":"BULACAN",
+			  //     "program_details":"program_details",
+			  //     "program_lead":"program_lead",
+			  //     "program_member":"program_member"   
+			  // } -->
+			
+			  <div class="columns">
+				<div class="cards">
+				  <h3 style="text-align:left;">ADD PROGRAM</h3>
+				  <form action="http://localhost:3002/UploadProgram" method="POST">
+					<label for="program_title">Program Title</label>
+					<input type="text" name="program_title" placeholder="Program Title" required>
+				
+					<label for="Start">Program Start</label>
+					<input type="datetime-local" name="start" placeholder="Program Start" required>
+				
+					<label for="End">Program End</label>
+					<input type="datetime-local" name="end" placeholder="Program End" required>
+
+					<label for="place">Place</label>
+					<input type="text" name="place" placeholder="Place" required>
+
+					<label for="details">Program Details</label>
+					<input type="text" name="program_details" placeholder="Program Details" required>
+				
+				  
+					<input type="submit" value="Submit">
+				  </form>
+				</div>
+			  </div>
+			  
+		  </div>
+	 </div>
+		  
+
+		
 	</div>
 
 </body>

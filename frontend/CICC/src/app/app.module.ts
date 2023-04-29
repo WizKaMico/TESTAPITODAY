@@ -15,7 +15,7 @@ import { ReportComponent } from './report/report.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { AgGridModule } from 'ag-grid-angular';
-
+  
 
 
 
