@@ -15,6 +15,9 @@ import { ReportComponent } from './report/report.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { AgGridModule } from 'ag-grid-angular';
+import { FacultyloginComponent } from './facultylogin/facultylogin.component';
+import { FacultydashboardComponent } from './facultydashboard/facultydashboard.component';
+import { FacultyregistrationComponent } from './facultyregistration/facultyregistration.component';
   
 
 
@@ -32,7 +35,10 @@ import { AgGridModule } from 'ag-grid-angular';
     PartnersComponent,
     ContentComponent,
     ReportComponent,
-    RegisterComponent
+    RegisterComponent,
+    FacultyloginComponent,
+    FacultydashboardComponent,
+    FacultyregistrationComponent
    
   ],
   imports: [

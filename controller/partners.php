@@ -39,11 +39,25 @@ $jsonData = json_encode($data);
 <head>
     <title>ag-Grid Example</title>
     <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css" />
     <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-alpine.css" />
     <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <style>
+		.height10{
+			height:10px;
+		}
+		.mtop10{
+			margin-top:10px;
+		}
+		.modal-label{
+			position:relative;
+			top:7px
+		}
+	</style>
 </head>
 <body>
+<a href="#updatepartner" style="margin-left:10px; margin-top:10px; background-color:#590000; margin-bottom: 10px; border-color:#590000;" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> 1). UPDATE PARTNER PROGRAM</a>
     <div id="myGrid" style="height: 500px; width:100%;" class="ag-theme-alpine"></div>
     <script>
         var columnDefs = [
@@ -73,5 +87,9 @@ $jsonData = json_encode($data);
         var gridDiv = document.querySelector('#myGrid');
         new agGrid.Grid(gridDiv, gridOptions);
     </script>
+  <?php include('modal/add_modal.php') ?>
+<script src="jquery/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 </html>

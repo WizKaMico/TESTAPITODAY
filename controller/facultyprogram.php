@@ -66,49 +66,22 @@ $jsonData = json_encode($data);
 	</style>
 </head>
 <body>
-<form method="POST" action="program_view.php">
-<a href="#addlead" style="margin-left:10px; margin-top:10px; background-color:#590000; margin-bottom: 10px; border-color:#590000;" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> 1). ADD LEAD</a>
-<a href="#addmember" style="margin-left:10px; margin-top:10px; background-color:#590000; margin-bottom: 10px; border-color:#590000;" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-user"></span> 2). ADD MEMBER</a>
-<a href="#addparticipant" style="margin-left:10px; margin-top:10px; background-color:#590000; margin-bottom: 10px; border-color:#590000;" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-user"></span></span> 3). ADD PARTICIPANTS</a>
 
-            <div class="col-sm-2" style="margin-left:10px; margin-top:10px; margin-bottom: 10px; border-color:#590000;">
-						<select class="form-control" name="mypid" required>
-							<?php
-							
-							$conn = mysqli_connect("localhost", "root", "", "test_app");
-                            $result = mysqli_query($conn, "SELECT * FROM program_management 
-							LEFT JOIN assign_program_faculty ON program_management.pid = assign_program_faculty.pid 
-							LEFT JOIN faculty ON assign_program_faculty.fid = faculty.fid 
-							WHERE assign_program_faculty.fid IS NOT NULL");
-
-
-							while ($row = mysqli_fetch_assoc($result)) {
-								echo '<option value="' . $row['pid'] . '">' . $row['program_title'] . '</option>';
-							}
-
-							?>
-						</select>
-					</div>
-
-                    <div class="col-sm-2" style="margin-left:10px; margin-top:10px; margin-bottom: 10px; border-color:#590000;">
-                         <button name="proceed" style=" background-color:#590000; color:white;" class="form-control">SEND</buton>      
-                    </div>
-</form>
 <div id="myGrid" style="height: 500px; width:100%;" class="ag-theme-alpine"></div>
     <script>
      var columnDefs = [
-        { headerName: "Program Title", field: "program_title", width: 100,   filter: true, resizable: true  },
-        { headerName: "Program Start", field: "start", width: 100,    filter: true, resizable: true },
-        { headerName: "Program End", field: "end", width: 100,  filter: true, resizable: true },
-        { headerName: "Place", field: "place", width: 100,  filter: true, resizable: true },
-        { headerName: "Program Lead", width: 200, field: "program_lead",  cellRenderer: function(params) {
+        { headerName: "Program Title", field: "program_title", width: 300,   filter: true, resizable: true  },
+        { headerName: "Program Start", field: "start", width: 300,    filter: true, resizable: true },
+        { headerName: "Program End", field: "end", width: 300,  filter: true, resizable: true },
+        { headerName: "Place", field: "place", width: 300,  filter: true, resizable: true },
+        { headerName: "Program Lead", width: 300, field: "program_lead",  cellRenderer: function(params) {
             if (!params.value) {
             return '<span style="background-color: maroon; color: white;">No assigned lead</span>';
             } else {
             return params.value;
             }
         }, filter: true, resizable: true },
-        { headerName: "Members", field: "totalmember", width: 100,  cellStyle: function(params) {
+        { headerName: "Members", field: "totalmember", width: 300,  cellStyle: function(params) {
             if (params.value == 0) {
             return { backgroundColor: "maroon" }; // or "red"
             }
@@ -117,8 +90,8 @@ $jsonData = json_encode($data);
             if (params.value == 0) {
             return { backgroundColor: "maroon" }; // or "red"
             }
-        }, width: 100,  filter: true, resizable: true },
-        { headerName: "Status", field: "status", width: 100, filter: true, resizable: true }
+        }, width: 300,  filter: true, resizable: true },
+        { headerName: "Status", field: "status", width: 300, filter: true, resizable: true }
         ];
 
         var rowData = <?php echo $jsonData; ?>;

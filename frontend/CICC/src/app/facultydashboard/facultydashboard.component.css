@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    height: 100vh; /* set the height of the body to the full viewport height */
+}
+
+.sidenav a.active {
+    background-color: #616161;
+    color: white;
+}
+/* Side Navigation Bar */
+.sidenav {
+    height: 100%;
+    width: 220px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #590000;
+    overflow-x: hidden;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 10px 8px 10px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #f5f5f5;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #590000;
+    background-color: #f5f5f5;
+}
+
+.main {
+    margin-left: 220px;
+    padding: 0 20px;
+}
+
+.header {
+    font-size: 36px;
+    padding: 30px 0;
+    color: #590000;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 24px;
+    color: #590000;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+/* Float four columns side by side */
+.column {
+    float: left;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .columns {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding */
+  .row {margin: 0 -5px;}
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Style the counter cards */
+  .cards {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    background-color: #f1f1f1;
+  }
+
+  input[type=text], input[type=datetime-local], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #590000;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #ccc;
+  }
+  

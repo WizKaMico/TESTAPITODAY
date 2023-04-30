@@ -1,6 +1,8 @@
 <?php
 	session_start();
-    $pid = $_GET['pid'];
+    if(isset($_POST['proceed'])){
+    $pid = $_POST['mypid'];
+    }
 ?>
 <!DOCTYPE html>
 <html>

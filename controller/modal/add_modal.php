@@ -134,3 +134,65 @@
         </div>
     </div>
 </div>
+
+
+
+<!-- Add New -->
+<div class="modal fade" id="updatepartner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="  background: transparent !important;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="false">&times;</button>
+                <center><h4 class="modal-title" id="myModalLabel">UPDATE PARTNER CONTRACT</h4></center>
+            </div>
+            <div class="modal-body">
+			<div class="container-fluid">
+			<form method="POST" action="modal/action/update_partner.php">
+				<div class="row form-group">
+					<div class="col-sm-2">
+						<label class="control-label modal-label">PARTNER:</label>
+					</div>
+					<div class="col-sm-10">
+						<select class="form-control" name="part_id" required>
+							<?php
+							
+							$conn = mysqli_connect("localhost", "root", "", "test_app");
+                            $result = mysqli_query($conn, "SELECT * FROM partners_management");
+
+
+							while ($row = mysqli_fetch_assoc($result)) {
+								echo '<option value="' . $row['part_id'] . '">' . $row['name'] . '</option>';
+							}
+
+							?>
+						</select>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-sm-2">
+						<label class="control-label modal-label">START:</label>
+					</div>
+					<div class="col-sm-10">
+					 <input type="date" name="start_date" class="form-control" require/>
+					</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-sm-2">
+						<label class="control-label modal-label">END:</label>
+					</div>
+					<div class="col-sm-10">
+					 <input type="date" name="expiration_date" class="form-control" require/>
+					</div>
+				</div>
+            </div> 
+			</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                <button type="submit" name="add" class="btn btn-primary" style="background-color:#590000;"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+			</form>
+            </div>
+
+        </div>
+    </div>
+</div>
